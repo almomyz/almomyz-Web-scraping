@@ -11,7 +11,7 @@ export async function getQuotes() {
     const nextBtnSelector = '.product-list-toolbar-footer .action.next';
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
-    await page.goto('https://www.abdulwahed.com/ar/computers-mobiles.html');
+    await page.goto('https://www.xcite.com/windows-laptops/c');
     const nextBtn = await page.waitForSelector(".mfp-close");
     if (nextBtn) {
         await nextBtn.click();
@@ -52,12 +52,12 @@ export async function getQuotes() {
     console.log("the length is: ", links.length);
 
 
-    async function extractInfoFromPage(link) {
+     async function extractInfoFromPage(link) {
+    
         await page.goto(link, { waitUntil: 'networkidle2' });
     
         // Extract name, price, image, and brand in a single page.evaluate() call
-        const [sku, name, price, image, brand, estimated, stockAvailable, attribute] = await page.evaluate(() => {
-            const sku = document.querySelector('.pdp-sku-container span:nth-child(2)');
+        const [name, price, image, brand, estimated, stockAvailable, attribute] = await page.evaluate(() => {
             const nameElement = document.querySelector('.product-info-main div h2');
             const priceElement = document.querySelector('.price');
             const imageElement = document.querySelector('.fotorama__img');
@@ -73,21 +73,19 @@ export async function getQuotes() {
             });
     
             return [
-                sku? sku.textContent : null,
                 nameElement? nameElement.textContent : null,
                 priceElement? priceElement.textContent : null,
                 imageElement? imageElement.getAttribute('src') : null,
                 brandElement? brandElement.textContent : null,
                 estimated? estimated.textContent : null,
                 stockAvailable? stockAvailable.textContent : null,
-                attribute,
+                attribute
             ];
         });
     
         // Create an object with the extracted information and return it
-        return { sku, link, name, price, image, brand, estimated, stockAvailable, attribute };
+        return { name, link, price, image, brand, estimated, stockAvailable, attribute }; 
     }
-    
 
     for (const link of links) {
         const info = await extractInfoFromPage(link);
