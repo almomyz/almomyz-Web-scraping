@@ -1,104 +1,111 @@
 import puppeteer from 'puppeteer';
-// Flag for remaining pages
-let isRemainPage = true;
-const nextBtnSelector = '.pager > .next > a';
 
+const nextBtnSelector = '.secondaryOnLight';
+const pageURL = 'https://www.xcite.com/windows-laptops/c';
+let results = [];
+// Function to fetch quotes
 export async function getQuotes() {
 
-    let results = [];
-    let isRemainPage = true;
-    let links=[];
-    const nextBtnSelector = '.product-list-toolbar-footer .action.next';
-    const browser = await puppeteer.launch({ headless: false });
+    // Start the browser and the page
+    const browser = await puppeteer.launch({ headless: false, defaultViewport: null });
     const page = await browser.newPage();
-    await page.goto('https://www.xcite.com/windows-laptops/c');
-    const nextBtn = await page.waitForSelector(".mfp-close");
-    if (nextBtn) {
-        await nextBtn.click();
-        console.log("complete loop now exit");
-    } else {
-        console.log("not fond next btn");
-        isRemainPage = false;
-    }
 
+    // Exclude image requests
+    await page.setRequestInterception(true);
+    const allowedResourceTypes = ['image', "font", "media"];
+    page.on('request', request => {
+        if (allowedResourceTypes.includes(request.resourceType())) {
+            request.abort();
+        } else {
+            request.continue();
+        }
+    });
+
+    await page.goto(pageURL, { waitUntil: "domcontentloaded" });
+
+    // Close the popup if it appears
    
 
-    
-
+    let allLinks = [];
+    await page.waitForSelector(nextBtnSelector)
     // Loop to get quotes until there are no more next buttons
-    while (isRemainPage) {
-        // Get page data
-        const link = await page.$$eval('.product-item-info', elements => {
-            return elements.map(element => element.querySelector('a').href);
+    while (true) {
+    
+        const hasNextButton = await page.$(nextBtnSelector);
+        if (!hasNextButton) {
+            console.log('No more next buttons');
+            break;
+        }
+
+        // Click next button after the page has loaded
+        await Promise.all([
+            page.waitForNavigation({ waitUntil: "domcontentloaded" }),
+            page.click(nextBtnSelector)
+        ]);
+    }
+
+    try {
+        await page.waitForSelector('.mb-28');
+        allLinks = await page.$$eval('.mb-28 div > a', elements => {
+            return elements.map(element => element.getAttribute('href'));
         });
 
-        // save the result in array
-        links = links.concat(link);
-
-        // Check if there is a next button
-        const nextBtn = await page.$(nextBtnSelector);
-        isRemainPage = !!nextBtn;
-        console.log("next btn: ", nextBtn, " is remain: ", isRemainPage);
-
-        if (!isRemainPage) { break }
-
-        // Click next button
-        await page.waitForSelector(nextBtnSelector);
-        await page.click(nextBtnSelector);
+        console.log('links:', allLinks);
+        for (const link of allLinks) {
+            const info = await extractInfoFromPage(page, link);
+            results.push(info);
+        }
+        
+    } catch (error) {
+        console.log('Error:', error);
     }
-
-    console.log("complete loop now exit");
-    console.log(links);
-    console.log("the length is: ", links.length);
-
-
-     async function extractInfoFromPage(link) {
     
-        await page.goto(link, { waitUntil: 'networkidle2' });
     
-        // Extract name, price, image, and brand in a single page.evaluate() call
-        const [name, price, image, brand, estimated, stockAvailable, attribute] = await page.evaluate(() => {
-            const nameElement = document.querySelector('.product-info-main div h2');
-            const priceElement = document.querySelector('.price');
-            const imageElement = document.querySelector('.fotorama__img');
-            const brandElement = document.querySelector('.brand-title span');
-            const estimated = document.querySelector('.estimated-container p strong');
-            const stockAvailable = document.querySelector('.available h3 span');
-            const attributeElements = document.querySelectorAll('.description  div div div div');
-            const attribute = Array.from(attributeElements).map(element => {
-                const strongElement = element.querySelector('p strong span');
-                const spanElement = element.querySelector('p span');
-                // Check if the strong element exists, otherwise use the span element
-                return strongElement? strongElement.textContent : spanElement? spanElement.textContent : null;
-            });
-    
-            return [
-                nameElement? nameElement.textContent : null,
-                priceElement? priceElement.textContent : null,
-                imageElement? imageElement.getAttribute('src') : null,
-                brandElement? brandElement.textContent : null,
-                estimated? estimated.textContent : null,
-                stockAvailable? stockAvailable.textContent : null,
-                attribute
-            ];
-        });
-    
-        // Create an object with the extracted information and return it
-        return { name, link, price, image, brand, estimated, stockAvailable, attribute }; 
-    }
 
-    for (const link of links) {
-        const info = await extractInfoFromPage(link);
-        results.push(info);
-    }
-   return results;   
+    
+
+    
+
+    // Close the browser
+    
+
+    return results;
+
 };
 
 
+async function extractInfoFromPage(page, link) {
 
-// Loop through each link and navigate to it
+    await page.goto(link, { waitUntil: 'networkidle2' });
 
+    // Extract name, price, image, and brand in a single page.evaluate() call
+    const [ productName, priceAfterDiscount,orginalPrice, photo, available, description] = await page.evaluate((link) => {
+        const productName = document.querySelector('h1');
+        const priceAfterDiscount = document.querySelector('.line-through');
+        const orginalPrice = document.querySelector('.text-functional-red-800'); 
+        const photo = document.querySelector('.relative.w-full.col-span-12.min-h-fit.sm\\:min-h-\\[500px\\] img:nth-child(2)');
+        const available = document.querySelector('.typography-small.text-functional-red-800');
+        const descrpiptionSelector = document.querySelectorAll('ProductOverview_list__8gYrU ui');
+        const description = Array.from(descrpiptionSelector).map(element => {
+            const strongElement = element.querySelector('li');
+            
+            // Check if the strong element exists, otherwise use the span element
+            return strongElement.textContent;
+        });
 
+        return [
+            
+            productName ? productName.textContent : null,
+            priceAfterDiscount ? priceAfterDiscount.textContent : null,
+            orginalPrice ? orginalPrice.textContent : null,
+            photo ? photo.getAttribute('src') : null,
+            available ? available.textContent : null,
+            description,
+            link,
+            
+        ];
+    });
 
-
-
+    // Create an object with the extracted information and return it
+    return {productName,priceAfterDiscount, orginalPrice,photo,available,description,link};
+}

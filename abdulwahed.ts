@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-
+import * as fs from 'fs';
 const nextBtnSelector = '.product-list-toolbar-footer .action.next';
 const pageURL = 'https://www.abdulwahed.com/ar/computers-mobiles.html';
 
@@ -63,49 +63,55 @@ export async function getQuotes() {
         results.push(info);
     }
 
+    saveToJson(results, 'abdulwahed.json');
+
     // Close the browser
-    await browser.close();
+    // await browser.close();
 
     return results;
 
 };
-
+function saveToJson(data, filePath) {
+    const jsonData = JSON.stringify(data, null, 4);
+    fs.writeFileSync(filePath, jsonData, "utf8");
+    console.log("all items have been successfully saved in", filePath, "file");
+}
 
 async function extractInfoFromPage(page, link) {
 
     await page.goto(link, { waitUntil: 'networkidle2' });
 
     // Extract name, price, image, and brand in a single page.evaluate() call
-    const [sku, name, price, image, brand, estimated, stockAvailable, attribute] = await page.evaluate(() => {
-        const sku = document.querySelector('.pdp-sku-container span:nth-child(2)');
-        const nameElement = document.querySelector('.product-info-main div h2');
-        const priceElement = document.querySelector('.price');
-        const imageElement = document.querySelector('.fotorama__img');
-        const brandElement = document.querySelector('.brand-title span');
-        const estimated = document.querySelector('.estimated-container p strong');
-        const stockAvailable = document.querySelector('.available h3 span');
-        const attributeElements = document.querySelectorAll('.description  div div div div');
-
-        const attribute = Array.from(attributeElements).map(element => {
-            const strongElement = element.querySelector('p strong span');
-            const spanElement = element.querySelector('p span');
+    const [ productName, priceAfterDiscount,orginalPrice, photo, available, description] = await page.evaluate((link) => {
+        const productName = document.querySelector('.product-info-main div h2');
+        const priceAfterDiscount = document.querySelector('#old-price-16071 .price');
+        const orginalPrice = document.querySelector('#product-price-16071 .price'); 
+        const photo = document.querySelector('.gallery-placeholder__image');
+        const available = document.querySelector('.available h3 span');
+        const descrpiptionSelector = document.querySelectorAll('tbody');
+        const description = Array.from(descrpiptionSelector).map(element => {
+            const strongElement = element.querySelector('tr td');
+            const spanElement = element.querySelector('tr td:nth-child(2)');
             // Check if the strong element exists, otherwise use the span element
-            return strongElement ? strongElement.textContent : spanElement ? spanElement.textContent : null;
+            return strongElement.textContent + spanElement.textContent;
         });
 
         return [
-            sku ? sku.textContent : null,
-            nameElement ? nameElement.textContent : null,
-            priceElement ? priceElement.textContent : null,
-            imageElement ? imageElement.getAttribute('src') : null,
-            brandElement ? brandElement.textContent : null,
-            estimated ? estimated.textContent : null,
-            stockAvailable ? stockAvailable.textContent : null,
-            attribute,
+            
+            productName ? productName.textContent : null,
+            priceAfterDiscount ? priceAfterDiscount.textContent : null,
+            orginalPrice ? orginalPrice.textContent : null,
+            photo ? photo.getAttribute('src') : null,
+            available ? available.textContent : null,
+            description,
+            link,
+            
         ];
     });
 
     // Create an object with the extracted information and return it
-    return { sku, link, name, price, image, brand, estimated, stockAvailable, attribute };
+    return {productName,priceAfterDiscount, orginalPrice,photo,available,description,link};
 }
+
+
 
