@@ -23,8 +23,8 @@ export async function getQuotes() {
 
     await page.goto(pageURL, { waitUntil: "domcontentloaded" });
 
-    // Close the popup if it appears
-    const closePopup = await page.waitForSelector(".mfp-close");
+    //Close the popup if it appears
+    const closePopup = await page.$(".mfp-close");
     if (closePopup) { await closePopup.click() }
 
     let allLinks = [];
@@ -84,28 +84,28 @@ async function extractInfoFromPage(page, link) {
     // Extract name, price, image, and brand in a single page.evaluate() call
     const [ productName, priceAfterDiscount,orginalPrice, photo, available, description] = await page.evaluate((link) => {
         const productName = document.querySelector('.product-info-main div h2');
-        const priceAfterDiscount = document.querySelector('#old-price-16071 .price');
-        const orginalPrice = document.querySelector('#product-price-16071 .price'); 
+        const priceAfterDiscount =document.querySelector('.price-wrapper[data-price-type="finalPrice"]');
+        const orginalPrice = document.querySelector('.price-wrapper[data-price-type="oldPrice"]'); 
         const photo = document.querySelector('.gallery-placeholder__image');
         const available = document.querySelector('.available h3 span');
-        const descrpiptionSelector = document.querySelectorAll('tbody');
+        const descrpiptionSelector = document.querySelectorAll('#product-attribute-specs-table > tbody > tr > td > table > tbody');
+        
         const description = Array.from(descrpiptionSelector).map(element => {
-            const strongElement = element.querySelector('tr td');
-            const spanElement = element.querySelector('tr td:nth-child(2)');
+            // const strongElement = element.querySelector(' tr:nth-child(1) > td:nth-child(1) > div').textContent.trim();
+            // const spanElement = element.querySelector(' tr:nth-child(1) > td:nth-child(2)').textContent.trim();
             // Check if the strong element exists, otherwise use the span element
-            return strongElement.textContent + spanElement.textContent;
+            return {key:"key" ,value: "key"};
         });
 
         return [
             
-            productName ? productName.textContent : null,
-            priceAfterDiscount ? priceAfterDiscount.textContent : null,
-            orginalPrice ? orginalPrice.textContent : null,
+            productName ? productName.textContent.trim() : null,
+            priceAfterDiscount ? priceAfterDiscount.textContent.trim() : null,
+            orginalPrice ? orginalPrice.textContent.trim() : priceAfterDiscount.textContent.trim(),
             photo ? photo.getAttribute('src') : null,
-            available ? available.textContent : null,
+            available ? available.textContent.trim() : null,
             description,
             link,
-            
         ];
     });
 
@@ -115,3 +115,25 @@ async function extractInfoFromPage(page, link) {
 
 
 
+
+
+
+
+
+// Get all elements with the class "product-item-info"
+// const productInfos = document.querySelectorAll('.product-item-info');
+
+// // Loop through each product info element
+// productInfos.forEach(function(productInfo) {
+//     // Find the price element within this product info element
+//     // 
+//     const finalPrice = productInfo.querySelector('.price-wrapper[data-price-type="finalPrice"]').textContent.trim();
+
+//      const oldPriceElment = productInfo.querySelector('.price-wrapper[data-price-type="oldPrice"]');
+
+//     const oldPrice = oldPriceElment ? oldPriceElment.textContent.trim() : null;
+
+    
+//     // Output the price
+//     console.log(finalPrice, oldPrice);
+// });
