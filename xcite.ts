@@ -26,7 +26,7 @@ export async function getQuotes() {
     // Close the popup if it appears
    
 
-    let allLinks = [];
+    let allurls = [];
     await page.waitForSelector(nextBtnSelector)
     // Loop to get quotes until there are no more next buttons
     while (true) {
@@ -46,15 +46,15 @@ export async function getQuotes() {
 
     try {
         await page.waitForSelector('.mb-28');
-        allLinks = await page.$$eval('.mb-28 div > a', elements => {
+        allurls = await page.$$eval('.mb-28 div > a', elements => {
             return elements.map(element => element.getAttribute('href'));
         });
 
-        console.log('links:', allLinks);
-        console.log('links:', allLinks.length);
+        console.log('urls:', allurls);
+        console.log('urls:', allurls.length);
         
-        for (const link of allLinks) {
-            const info = await extractInfoFromPage(page, link);
+        for (const url of allurls) {
+            const info = await extractInfoFromPage(page, url);
             results.push(info);
         }
        
@@ -78,41 +78,42 @@ export async function getQuotes() {
 };
 
 
-async function extractInfoFromPage(page, link) {
+async function extractInfoFromPage(page, url) {
     // Define the transformTextToObject function within the page.evaluate() call
 
 
-    await page.goto(link, { waitUntil: 'networkidle2' });
+    await page.goto(url, { waitUntil: 'networkidle2' });
 
     // Extract name, price, image, and brand in a single page.evaluate() call
-    const [ productName, priceAfterDiscount, orginalPrice, photo, available, description] = await page.evaluate((link) => {
-        let lsittext =[];
+    const [ productName,URL,photo,price,wasPrice,description, available ] = await page.evaluate((url) => {
+    
         const con= document.querySelector(" div.flex-1 div > h3.mb-5")
-        const productName = document.querySelector('h1');
-        const priceAfterDiscount = document.querySelector('.line-through');
-        const orginalPrice = con.childElementCount ?con.querySelector(" div span:nth-child(2)"):con; 
         const photo = document.querySelector('.relative.w-full.col-span-12.min-h-fit.sm\\:min-h-\\[500px\\] img:nth-child(2)');
-        const available = document.querySelector('div.flex.items-center > div .typography-small');
+        const productName = document.querySelector('h1');
+        const wasPrice = document.querySelector('.line-through');
+        const price = con.childElementCount ?con.querySelector(" div span:nth-child(2)"):con; 
         const descriptionSelector = document.querySelectorAll('.ProductOverview_list__8gYrU  ul li');
         const description = Array.from(descriptionSelector).map(element => {
           
             
             return element.textContent;
           }); 
+        const available = document.querySelector('div.flex.items-center > div .typography-small');
            
         return [
             productName? productName.textContent : null,
-            priceAfterDiscount? priceAfterDiscount.textContent : null,
-            orginalPrice? orginalPrice.textContent.trim() : priceAfterDiscount.textContent.trim(),
+            url? url : null,
             photo? photo.getAttribute('src') : null,
-            available? available.textContent : null,
-            description,
-            link,
+            price? price.textContent.trim() : wasPrice.textContent.trim(),
+            wasPrice? wasPrice.textContent : null,
+            description,            
+            available.textContent==="In Stock"? true : false,
+            
         ];
     });
 
     // Create an object with the extracted information and return it
-    return {productName, priceAfterDiscount, orginalPrice, photo, available, description, link};
+    return {productName, url,photo, price, wasPrice, description, available};
 }
 
 function saveToJson(data, filePath) {
