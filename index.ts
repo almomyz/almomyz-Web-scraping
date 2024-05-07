@@ -1,4 +1,4 @@
-import { getQuotes } from './xcite';
+import { getQuotes } from './abdulwahed';
 
 async function main() {
     try {

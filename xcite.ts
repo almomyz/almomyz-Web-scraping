@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import * as fs from 'fs';
 const nextBtnSelector = '.secondaryOnLight';
-const pageURL = 'https://www.xcite.com/apple-macbook/c';
+const pageURL = 'https://www.xcite.com/mobile-phones/c';
 let results = [];
 // Function to fetch quotes
 export async function getQuotes() {
@@ -12,7 +12,7 @@ export async function getQuotes() {
 
     // Exclude image requests
     await page.setRequestInterception(true);
-    const allowedResourceTypes = ['image', "font", "media"];
+    const allowedResourceTypes = ['image', "font"];
     page.on('request', request => {
         if (allowedResourceTypes.includes(request.resourceType())) {
             request.abort();
@@ -51,13 +51,13 @@ export async function getQuotes() {
         });
 
         console.log('links:', allLinks);
+        console.log('links:', allLinks.length);
         
-        // for (const link of allLinks) {
-        //     const info = await extractInfoFromPage(page, link);
-        //     results.push(info);
-        // }
-        const info = await extractInfoFromPage(page, "https://www.xcite.com/apple-macbook-pro-core-i9-9th-gen-16gb-ram-1tb-ssd-16-laptop-space-grey/p");
+        for (const link of allLinks) {
+            const info = await extractInfoFromPage(page, link);
             results.push(info);
+        }
+       
         
         
     } catch (error) {
@@ -86,18 +86,18 @@ async function extractInfoFromPage(page, link) {
 
     // Extract name, price, image, and brand in a single page.evaluate() call
     const [ productName, priceAfterDiscount, orginalPrice, photo, available, description] = await page.evaluate((link) => {
-       
+        let lsittext =[];
         const con= document.querySelector(" div.flex-1 div > h3.mb-5")
         const productName = document.querySelector('h1');
         const priceAfterDiscount = document.querySelector('.line-through');
         const orginalPrice = con.childElementCount ?con.querySelector(" div span:nth-child(2)"):con; 
         const photo = document.querySelector('.relative.w-full.col-span-12.min-h-fit.sm\\:min-h-\\[500px\\] img:nth-child(2)');
         const available = document.querySelector('div.flex.items-center > div .typography-small');
-        const descriptionSelector = document.querySelectorAll('.ProductOverview_list__8gYrU  ul');
+        const descriptionSelector = document.querySelectorAll('.ProductOverview_list__8gYrU  ul li');
         const description = Array.from(descriptionSelector).map(element => {
-            const lines = element.textContent.replace("/n", " ");
+          
             
-            return lines;
+            return element.textContent;
           }); 
            
         return [

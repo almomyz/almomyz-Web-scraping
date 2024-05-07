@@ -63,7 +63,7 @@ export async function getQuotes() {
         results.push(info);
     }
 
-    saveToJson(results, 'abdulwahed.json');
+    saveToJson(results, 'WebScrapingAbdulwahed_6-5-2024.json');
 
     // Close the browser
     // await browser.close();
