@@ -64,7 +64,7 @@ export async function getQuotes() {
         results.push(info);
     }
     await saveToJson(results, 'WebScrapingAbdulwahed_6-5-2024.json');
-    await insertProducts(results);
+    //await insertProducts(results);
    
     // Close the browser
     // await browser.close();
@@ -74,7 +74,7 @@ export async function getQuotes() {
 };
 function saveToJson(data, filePath) {
     const jsonData = JSON.stringify(data, null, 4);
-    fs.writeFileSync(filePath, jsonData, "utf8");
+    fs.writeFileSync(filePath, jsonData);
     console.log("all items have been successfully saved in", filePath, "file");
 }
 
@@ -86,13 +86,11 @@ async function extractInfoFromPage(page, url) {
     const [ productName,con,photo,price, wasPrice, description,available ] = await page.evaluate((url) => {
         function extractAndFormatNumbers(text) {
             // Regular expression to match all non-numeric characters
-            const regex = /[^0-9]+/g;
-            // Use replace() to remove all non-numeric characters
-            let result = text.replace(regex, '');
-            // Remove commas
-            result = result.replace(/,./g, '');
-            // Return the result
-            return result;
+            // let price = text.split('‏')[1];
+
+            // let noPrice = parseFloat(price.replace(/,/g, ''));
+            // console.log(noPrice);
+            //return noPrice;
         }
      
         const productName = document.querySelector('.product-info-main div h2');
@@ -126,8 +124,8 @@ async function extractInfoFromPage(page, url) {
             productName ? productName.textContent.trim() : null,
             url,
             photo ? photo.getAttribute('src') : null,
-            price ? extractAndFormatNumbers(price.textContent.trim()) :     extractAndFormatNumbers(wasPrice.textContent.trim()),
-            wasPrice ? extractAndFormatNumbers(wasPrice.textContent.trim()): 0,
+            price ? price.textContent.trim() :  wasPrice.textContent.trim(),
+            wasPrice ? wasPrice.textContent.trim(): 0,
             description,
             available.textContent.trim() === "متوفر" ? true : false,
             
