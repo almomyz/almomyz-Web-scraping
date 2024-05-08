@@ -4,7 +4,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-128-gb-5g-mtmj3ah-a-r.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/i/p/iphone-15-pink-1_1.jpg",
         "price": 3799,
-        "wasPrice": 3799,
+        "wasPrice": 0,
         "description": [
             "Capacity : 128GB",
             "Width : 71.6 mm",
@@ -26,7 +26,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-128-gb-5g-mtml3ah-a-r.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/5/0/5000044-1_1.jpg",
         "price": 3799,
-        "wasPrice": 3799,
+        "wasPrice": 0,
         "description": [
             "Capacity : 128GB",
             "Width : 71.6 mm",
@@ -48,7 +48,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-128-gb-5g-mtmm3ah-a-r.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/5/0/5000045-1_1.jpg",
         "price": 3799,
-        "wasPrice": 3799,
+        "wasPrice": 0,
         "description": [
             "Capacity : 128GB",
             "Width : 71.6 mm",
@@ -70,7 +70,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-pro-256gb-5g-white-titanium-mtud3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/5/0/5000161-5_1.jpg",
         "price": 5199,
-        "wasPrice": 5199,
+        "wasPrice": 0,
         "description": [
             "Width : 70.6 mm",
             "Height : 146.6 mm",
@@ -86,7 +86,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-pro-256gb-5g-natural-titanium-mtuf3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/5/0/5000162-1_3.jpg",
         "price": 5199,
-        "wasPrice": 5199,
+        "wasPrice": 0,
         "description": [
             "Width : 70.6 mm",
             "Height : 146.6 mm",
@@ -102,7 +102,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-pro-256gb-5g-blue-titanium-mtug3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/5/0/5000163-1_1.jpg",
         "price": 5199,
-        "wasPrice": 5199,
+        "wasPrice": 0,
         "description": [
             "Width : 70.6 mm",
             "Height : 146.6 mm",
@@ -118,7 +118,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-12-128gb-black-mgja3aa-a-s.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/i/p/iphone12-1.jpg",
         "price": 4049,
-        "wasPrice": 4049,
+        "wasPrice": 0,
         "description": [
             "السعة : 128GB",
             "العرض: : 71.5 mm",
@@ -164,7 +164,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-14-pro-max-silver-256gb-mq9c3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088980-1.jpg",
         "price": 5699,
-        "wasPrice": 5699,
+        "wasPrice": 0,
         "description": [
             "السعة : 256 جيجابايت",
             "العرض : 77.6 مم",
@@ -192,7 +192,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a24-128gb-light-green-sm-a245flgumea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/s/m/sm-a245flgumea-1.jpg",
         "price": 849,
-        "wasPrice": 849,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.2GHz, 2GHz",
             "نوع وحدة المعالجة المركزية : Octa-Core",
@@ -218,7 +218,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a24-128gb-black-sm-a245fzkumea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/s/m/sm-a245fzkumea.jpg",
         "price": 849,
-        "wasPrice": 849,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.2GHz, 2GHz",
             "نوع وحدة المعالجة المركزية : Octa-Core",
@@ -244,7 +244,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a24-128gb-silver-sm-a245fzsumea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1089168-1.jpg",
         "price": 849,
-        "wasPrice": 849,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.2GHz, 2GHz",
             "نوع وحدة المعالجة المركزية : Octa-Core",
@@ -270,7 +270,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a54-5g-128gb-green-sm-a546elgcmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1089176-1.jpg",
         "price": 1599,
-        "wasPrice": 1599,
+        "wasPrice": 0,
         "description": [
             "المعالج : ‎2.4جيجاهرتز, 2جيجاهرتز‎",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -295,7 +295,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a54-5g-128gb-black-sm-a546ezkcmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1089174-1.jpg",
         "price": 1599,
-        "wasPrice": 1599,
+        "wasPrice": 0,
         "description": [
             "المعالج : ‎2.4جيجاهرتز, 2جيجاهرتز‎",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -320,7 +320,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-pro-max-256gb-5g-natural-titanium-mu6r3ah-a-r.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/5/0/5000162-1_2.jpg",
         "price": 5699,
-        "wasPrice": 5699,
+        "wasPrice": 0,
         "description": [
             "Width : 76.7 mm",
             "Height : 159.9 mm",
@@ -336,7 +336,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-15-128-gb-5g-mtmh3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/m/t/mtmh3ah-1.jpg",
         "price": 3799,
-        "wasPrice": 3799,
+        "wasPrice": 0,
         "description": [
             "Capacity : 128GB",
             "Width : 71.6 mm",
@@ -358,7 +358,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-14-plus-purple-128gb-mq4e3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088979-1.jpg",
         "price": 4199,
-        "wasPrice": 4199,
+        "wasPrice": 0,
         "description": [
             "السعة : 128 جيجابايت",
             "العرض : 78.1 مم",
@@ -384,7 +384,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-14-purple-128gb-mpuy3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/m/p/mpuy3ah-1.jpg",
         "price": 3799,
-        "wasPrice": 3799,
+        "wasPrice": 0,
         "description": [
             "السعة : 128 جيجابايت",
             "العرض : 71.5 مم",
@@ -410,7 +410,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-14-starlight-128gb-mpuq3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/m/p/mpuq3ah-1.jpg",
         "price": 3799,
-        "wasPrice": 3799,
+        "wasPrice": 0,
         "description": [
             "السعة : 128 جيجابايت",
             "العرض : 71.5 مم",
@@ -436,7 +436,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-14-yellow-128gb-mr3q3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1089190-1.jpg",
         "price": 3799,
-        "wasPrice": 3799,
+        "wasPrice": 0,
         "description": [
             "السعة : 128 جيجابايت",
             "العرض : 71.5 مم",
@@ -462,7 +462,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-14-plus-yellow-128gb-mr603ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1089190-1_1.jpg",
         "price": 4199,
-        "wasPrice": 4199,
+        "wasPrice": 0,
         "description": [
             "السعة : 128 جيجابايت",
             "العرض : 78.1 مم",
@@ -488,7 +488,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-14-midnight-256gb-mpvw3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088971-1_1.jpg",
         "price": 4299,
-        "wasPrice": 4299,
+        "wasPrice": 0,
         "description": [
             "السعة : 256 جيجابايت",
             "العرض : 71.5 مم",
@@ -514,7 +514,7 @@
         "url": "https://www.abdulwahed.com/ar/apple-iphone-13-blue-128gb-mlng3ah-a.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/m/l/mlng3ah-1.jpg",
         "price": 3499,
-        "wasPrice": 3499,
+        "wasPrice": 0,
         "description": [
             "السعة : 128 جيجابايت",
             "العرض : 71.5 مم",
@@ -539,7 +539,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-s23-ultra-256gb-beige-sm-s918bzecmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088921-5.jpg",
         "price": 5199,
-        "wasPrice": 5199,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 3.36GHz, 2.8 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -567,7 +567,7 @@
         "url": "https://www.abdulwahed.com/ar/additional-495-sr-discount-samsung-galaxy-s23-ultra-256gb-green-sm-s918bzgcmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088873-1.jpg",
         "price": 5199,
-        "wasPrice": 5199,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 3.36GHz, 2.8 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -595,7 +595,7 @@
         "url": "https://www.abdulwahed.com/ar/additional-495-sr-discount-samsung-galaxy-s23-ultra-256gb-black-sm-s918bzkcmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088872-1.jpg",
         "price": 5199,
-        "wasPrice": 5199,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 3.36GHz, 2.8 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -623,7 +623,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-m54-5g-128gb-blue-sm-m546bdbdmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1089169-1.jpg",
         "price": 1699,
-        "wasPrice": 1699,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.4 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -645,7 +645,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a34-5g-128gb-light-green-sm-a346elgamea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/s/m/sm-a346elgamea-1.jpg",
         "price": 1199,
-        "wasPrice": 1199,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.6 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -671,7 +671,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a34-5g-128gb-black-sm-a346ezkamea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1089172-1.jpg",
         "price": 1199,
-        "wasPrice": 1199,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.6 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -697,7 +697,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a53-5g-128gb-black-sm-a536ezkgmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088878-1.jpg",
         "price": 1599,
-        "wasPrice": 1599,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.4 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -725,7 +725,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a53-5g-128gb-blue-sm-a536elbgmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088880-1_1.jpg",
         "price": 1599,
-        "wasPrice": 1599,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2.4 جيجاهرتز, 2 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
@@ -753,7 +753,7 @@
         "url": "https://www.abdulwahed.com/ar/samsung-galaxy-a14-128gb-5g-black-sm-a146pzkgmea.html",
         "photo": "https://www.abdulwahed.com/media/catalog/product/cache/f84b542cb21efc3b3973b50c68d61246/1/0/1088894-1.jpg",
         "price": 775,
-        "wasPrice": 775,
+        "wasPrice": 0,
         "description": [
             "سرعة وحدة المعالجة المركزية : 2 جيجاهرتز, 1.8 جيجاهرتز",
             "نوع وحدة المعالجة المركزية : ثماني النواة",
