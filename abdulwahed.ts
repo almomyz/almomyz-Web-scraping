@@ -86,16 +86,16 @@ async function extractInfoFromPage(page, url) {
     const [ productName,con,photo,price, wasPrice, description,available ] = await page.evaluate((url) => {
         function extractAndFormatNumbers(text) {
             // Regular expression to match all non-numeric characters
-            // let price = text.split('‏')[1];
+            let price = text.split('‏')[1];
 
-            // let noPrice = parseFloat(price.replace(/,/g, ''));
-            // console.log(noPrice);
-            //return noPrice;
+            let noPrice = parseFloat(price.replace(/,/g, ''));
+
+            return noPrice;
         }
      
         const productName = document.querySelector('.product-info-main div h2');
-        const wasPrice =document.querySelector('.price-wrapper[data-price-type="finalPrice"]');
-        const price = document.querySelector('.price-wrapper[data-price-type="oldPrice"]'); 
+        const price = document.querySelector('.price-wrapper[data-price-type="finalPrice"]'); 
+        const wasPrice =document.querySelector('.price-wrapper[data-price-type="oldPrice"]');
         const photo = document.querySelector('.gallery-placeholder__image');
         
         const descriptionSelector = document.querySelectorAll('#product-attribute-specs-table > tbody > tr > td > table > tbody > tr');
@@ -124,8 +124,8 @@ async function extractInfoFromPage(page, url) {
             productName ? productName.textContent.trim() : null,
             url,
             photo ? photo.getAttribute('src') : null,
-            price ? price.textContent.trim() :  wasPrice.textContent.trim(),
-            wasPrice ? wasPrice.textContent.trim(): 0,
+            extractAndFormatNumbers(price.textContent.trim()),
+            wasPrice ? extractAndFormatNumbers(wasPrice.textContent.trim()) : 0,
             description,
             available.textContent.trim() === "متوفر" ? true : false,
             
